@@ -1,0 +1,84 @@
+.navbar {
+    margin-top: 16px;
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(90deg, #e0f2fe 0%, #ede9fe 100%);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    animation: navbarFadeIn 1.2s ease-in-out;
+}
+
+@keyframes navbarFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.navbar .logo {
+    width: 80px;
+    border-radius: 8px;
+}
+.navbar-menu {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+    font-size: 18px;
+    color: #49557e;
+    margin: 0;
+    padding: 0;
+}
+.navbar-menu li {
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+.navbar-menu li:hover {
+    background: #e0e7ef;
+    color: #2563eb;
+}
+.navbar-right {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+}
+.navbar button {
+    background: #2563eb;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    padding: 10px 26px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.navbar button:hover {
+    background: #1e40af;
+}
+
+.navbar .active{
+    padding-bottom: 2px;
+    border-bottom: 2px solid #2563eb;
+}
+.navbar li{
+    cursor:pointer;
+}
+
+.navbar-search-icon{
+    position: relative;
+}
+.navbar-search-icon .dot{
+    position: absolute;
+    min-width: 10px;
+    min-height: 10px;
+    background-color: tomato;
+    border-radius: 50%;
+    top: -8px;
+    right: -8px;
+}
