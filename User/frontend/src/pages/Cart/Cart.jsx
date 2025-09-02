@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import './cart.css';
-import 
+
  
-const Cart = () => {
+ const Cart = () => {
     const {cartItems, food_list } = useContext()
     return (
         <div className="cart">
