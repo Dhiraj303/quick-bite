@@ -17,6 +17,31 @@ const StoreContextProvider = (props) =>{
     const removeFromCart = (itemId) =>{
         setCartItems((prev)=>({...prev,[itemId]:prev[itemId]-1}))
     }
+     const getTotalCartAmount=()=>{
+        let totalAmount=0;
+        for(const item in cartItems){
+            if(cartItems[item]>0){
+            let itemInfo=food_list.find((product)=>product._id ===item);
+            totalAmount+=itemInfo.price*cartItems[item];
+        }
+    }
+     return totalAmount;
+    }
+
+    const getDiscountedTotal = (promocode) => {
+    const total = getTotalCartAmount();
+    if (promocode === "new100") {
+        return Math.max(total - 100, 0);
+    }
+    return total;
+}
+
+const searchFoodByName = (query) => {
+  if (!query) return [];
+  return food_list.filter(item =>
+    item.name.toLowerCase().includes(query.toLowerCase())
+  );
+};
 
 
     const contextValue = {
@@ -24,7 +49,10 @@ const StoreContextProvider = (props) =>{
         cartItems,
         setCartItems,
         addToCart,
-        removeFromCart
+        removeFromCart,
+        getTotalCartAmount,
+        getDiscountedTotal,
+        searchFoodByName
     }
 
     useEffect(()=>{

@@ -81,4 +81,8 @@
     border-radius: 50%;
     top: -8px;
     right: -8px;
+
+}
+.dot-green {
+  background-color: #22c55e !important; /* Tailwind green-500 */
 }
