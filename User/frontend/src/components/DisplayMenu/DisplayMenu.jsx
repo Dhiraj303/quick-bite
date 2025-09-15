@@ -6,11 +6,11 @@ import FoodItem from '../FoodItem/FoodItem';
 const ITEMS_PER_PAGE = 8;
 
 const DisplayMenu = ({ category }) => {
-  const { food_list } = useContext(StoreContext);
+  const { dynamic_food_list } = useContext(StoreContext);
   const [currentPage, setCurrentPage] = useState(1);
 
   // Filter items by category
-  const filteredList = food_list.filter(item => category === "all" || category === item.category);
+  const filteredList = dynamic_food_list.filter(item => category === "all" || category === item.category);
 
   // Pagination logic
   const totalPages = Math.ceil(filteredList.length / ITEMS_PER_PAGE);
@@ -20,10 +20,17 @@ const DisplayMenu = ({ category }) => {
 
   return (
     <div className='food-display' id='food-display'>
-      <h2>The best dishes from our resturant</h2>
+      <h2>The best dishes from our restaurant</h2>
       <div className='food-display-list'>
-        {paginatedItems.map((item, index) => (
-          <FoodItem key={item._id} id={item._id} name={item.name} price={item.price} description={item.description} image={item.image} />
+        {paginatedItems.map((item) => (
+          <FoodItem
+            key={item.id || item._id}
+            id={item.id || item._id}
+            name={item.name}
+            price={item.price}
+            description={item.description}
+            image={item.imgUrl || item.image}
+          />
         ))}
       </div>
       {/* Pagination Controls */}
